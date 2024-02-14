@@ -1,14 +1,56 @@
-import { Component } from '@angular/core';
+import { Component, Inject, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
+import {
+  FormBuilder,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+  FormsModule,
+} from '@angular/forms';
+import { AuthService } from './services/auth.service';
+import { TodosFirebaseService } from './services/todosFirebase.service';
+import { TodoInterface } from './interfaces/todo.interface';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet],
+  imports: [CommonModule, RouterOutlet, ReactiveFormsModule, FormsModule],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrl: './app.component.scss',
+  providers: [AuthService],
 })
-export class AppComponent {
-  title = 'Netflix-mm';
+export class AppComponent implements OnInit {
+  registrationForm!: FormGroup;
+  todosFirebaseService = inject(TodosFirebaseService);
+  authService = inject(AuthService);
+  fb = inject(FormBuilder);
+
+  todos!: TodoInterface[];
+
+  ngOnInit() {
+    this.initRegistrationForm();
+
+    this.todosFirebaseService.getTodos().subscribe((todos) => {
+      this.todos = todos;
+    });
+  }
+
+  initRegistrationForm() {
+    this.registrationForm = this.fb.group({
+      email: ['', [Validators.required]],
+      password: ['', [Validators.required]],
+    });
+  }
+
+  onSubmit() {
+    this.authService.registerWithEmailAndPassword(
+      this.registrationForm.value.email,
+      this.registrationForm.value.password
+    );
+  }
+
+  onSignInWithGoogle() {
+    this.authService.signInWithGoogle();
+  }
 }

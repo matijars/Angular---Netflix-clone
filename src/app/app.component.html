@@ -1,0 +1,11 @@
+<form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+  <input formControlName="email" placeholder="Username" />
+  <input formControlName="password" placeholder="Password" />
+  <button type="submit" [disabled]="registrationForm.invalid">Register</button>
+</form>
+
+<button (click)="onSignInWithGoogle()">Sign in with Google</button>
+
+@for (todo of todos; track $index) {
+<p>{{ todo.text }}</p>
+}
