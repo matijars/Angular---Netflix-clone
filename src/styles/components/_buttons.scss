@@ -1,0 +1,17 @@
+.mat-button {
+  display: flex;
+  align-items: center;
+  outline: none;
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  color: $color-white;
+  background: $color-primary;
+  border-radius: 0.3rem;
+  font-size: 0.9rem;
+  transition: 0.2s background ease-in-out;
+
+  &:hover {
+    background: lighten($color: $color-primary, $amount: 13);
+  }
+}

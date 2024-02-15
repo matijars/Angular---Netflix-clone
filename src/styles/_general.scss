@@ -1,0 +1,32 @@
+@import "./mixins/variables";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Mulish", sans-serif;
+}
+
+ul {
+  list-style: none;
+  li {
+    a {
+      text-decoration: none;
+    }
+  }
+}
+
+.container {
+  max-width: 1200px;
+  width: 100%;
+  padding: 0;
+}
+
+.background-section {
+  height: 75vh;
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    url("../assets/hero-background.png") no-repeat center center / cover;
+
+  display: flex;
+  flex-direction: column;
+}

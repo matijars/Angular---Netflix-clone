@@ -1,3 +1,14 @@
+<div class="background-section">
+  <app-header></app-header>
+  <app-landing></app-landing>
+</div>
+
+<div class="mat-section-wrapper">
+  @for (data of sectionData; track $index) {
+  <app-section [sectionData]="data"></app-section>
+  }
+</div>
+
 <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
   <input formControlName="email" placeholder="Username" />
   <input formControlName="password" placeholder="Password" />

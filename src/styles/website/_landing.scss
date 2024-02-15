@@ -1,0 +1,51 @@
+.mat-landing {
+  display: flex;
+  gap: 1.1rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  color: $color-white;
+}
+
+.landing-text {
+  display: flex;
+  gap: 1.1rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  h1 {
+    font-size: 3rem;
+    font-weight: 900;
+  }
+
+  p {
+    font-size: 1.5rem;
+    font-weight: 400;
+  }
+}
+
+.landing-form-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  .landing-form {
+    display: flex;
+    gap: 3rem;
+    justify-content: space-between;
+    height: 3rem;
+
+    input {
+      width: 100%;
+    }
+
+    button {
+      font-size: 1.2rem;
+      font-weight: bold;
+      white-space: nowrap;
+      text-align: center;
+    }
+  }
+}

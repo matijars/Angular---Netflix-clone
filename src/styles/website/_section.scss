@@ -1,0 +1,35 @@
+.mat-section-wrapper .mat-section:nth-child(even) {
+  flex-direction: row-reverse;
+}
+
+.mat-section {
+  height: 600px;
+  padding: 0% 10%;
+  color: $color-white;
+  background-color: $color-black;
+  border-top: 0.5rem solid $color-separator;
+
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+
+  .section-left {
+    flex: 1;
+
+    h1 {
+      font-size: 3rem;
+      font-weight: 900;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      font-size: 1.5rem;
+      font-weight: 400;
+    }
+  }
+
+  .section-right {
+    flex: 1;
+    text-align: center;
+  }
+}
