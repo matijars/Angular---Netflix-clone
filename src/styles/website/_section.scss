@@ -4,7 +4,7 @@
 
 .mat-section-wrapper .mat-section:nth-child(even),
 .mat-section-wrapper .mat-section:nth-child(odd) {
-  @include sections {
+  @include responsive {
     flex-direction: column;
     text-align: center;
     padding: 3.5rem 1rem;

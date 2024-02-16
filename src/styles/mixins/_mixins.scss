@@ -3,7 +3,7 @@ $tablet-width: 768px;
 $laptop-width: 1024px;
 $desktop-width: 1600px;
 
-@mixin sections {
+@mixin responsive {
   @media (max-width: 991px) {
     @content;
   }
