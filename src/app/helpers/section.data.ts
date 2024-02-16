@@ -2,7 +2,7 @@ export const SectionData = [
   {
     title: 'Enjoy on your TV',
     text: 'Watch on Smart TVs, Playstation, Xbox, Chromecast, Apple TV, Blu-ray players, and more.',
-    src: 'first_object.jpg',
+    src: '../assets/sections/section-gif.gif',
   },
   {
     title: 'Download your shows to watch offline',
@@ -12,7 +12,7 @@ export const SectionData = [
   {
     title: 'Watch everywhere',
     text: 'Stream unlimited movies and TV shows on your phone, tablet, laptop, and TV.',
-    src: 'third_object.jpg',
+    src: '../assets/sections/device-pile-img.png',
   },
   {
     title: 'Create profiles for kids',

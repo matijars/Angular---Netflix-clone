@@ -2,14 +2,35 @@
   flex-direction: row-reverse;
 }
 
+.mat-section-wrapper .mat-section:nth-child(even),
+.mat-section-wrapper .mat-section:nth-child(odd) {
+  @include sections {
+    flex-direction: column;
+    text-align: center;
+    padding: 3.5rem 1rem;
+
+    h1 {
+      font-size: 2rem;
+      font-weight: 700;
+    }
+
+    p {
+      font-size: 1.125rem;
+      font-weight: 400;
+    }
+  }
+}
+
 .mat-section {
-  height: 600px;
+  height: fit-content;
+  min-height: 600px;
   padding: 0% 10%;
   color: $color-white;
   background-color: $color-black;
   border-top: 0.5rem solid $color-separator;
 
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 2rem;
 
@@ -31,5 +52,9 @@
   .section-right {
     flex: 1;
     text-align: center;
+
+    img {
+      width: 100%;
+    }
   }
 }
