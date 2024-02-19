@@ -4,7 +4,16 @@
   </div>
 
   <ul class="header-links">
-    <li><a href="">About</a></li>
-    <button class="mat-button">Sign in</button>
+    @if (!this.isLoggedIn()) {
+    <button
+      class="mat-button"
+      routerLink="/login"
+      routerLinkActive="router-link-active"
+    >
+      Sign in
+    </button>
+    } @else {
+    <button class="mat-button sign-out" (click)="onSignOut()">Sign out</button>
+    }
   </ul>
 </nav>

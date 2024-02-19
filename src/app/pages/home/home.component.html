@@ -1,0 +1,10 @@
+<div class="background-section">
+  <app-header></app-header>
+  <app-landing></app-landing>
+</div>
+
+<div class="mat-section-wrapper">
+  @for (data of sectionData; track $index) {
+  <app-section [sectionData]="data"></app-section>
+  }
+</div>

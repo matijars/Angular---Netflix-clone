@@ -4,11 +4,24 @@
 </div>
 
 <div class="landing-form-wrapper">
-  <h3>
-    Ready to watch? Enter your email to create or restart your membership.
-  </h3>
-  <div class="landing-form">
-    <input type="text" placeholder="Your email" />
-    <button class="mat-button">Get Started</button>
-  </div>
+  <h3>Ready to watch? Enter your email and password to create account.</h3>
+  <form
+    class="landing-form"
+    [formGroup]="registrationForm"
+    (ngSubmit)="onSubmit()"
+  >
+    <input type="email" formControlName="email" placeholder="Enter email" />
+    <input
+      type="password"
+      formControlName="password"
+      placeholder="Enter password"
+    />
+    <button
+      type="submit"
+      class="mat-button"
+      [disabled]="registrationForm.invalid"
+    >
+      Sign Up
+    </button>
+  </form>
 </div>
