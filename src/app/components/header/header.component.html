@@ -1,9 +1,14 @@
 <nav class="container">
   <div class="header-logo">
-    <img src="../../../assets/matflix-logo.png" alt="Matflix logo" />
+    <img
+      src="../../../assets/matflix-logo.png"
+      alt="Matflix logo"
+      routerLink=""
+    />
   </div>
 
   <ul class="header-links">
+    <span>{{ this.authService.loggedInUser }}</span>
     @if (!this.isLoggedIn()) {
     <button
       class="mat-button"

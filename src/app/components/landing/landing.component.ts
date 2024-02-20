@@ -6,12 +6,13 @@ import {
   Validators,
 } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
+import { Router, RouterLink, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-landing',
   standalone: true,
-  imports: [ReactiveFormsModule],
-  providers: [AuthService],
+  imports: [ReactiveFormsModule, RouterModule],
+  providers: [AuthService, RouterLink, Router],
   templateUrl: './landing.component.html',
   styleUrl: './landing.component.scss',
 })

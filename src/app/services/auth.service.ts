@@ -7,6 +7,7 @@ import {
   User,
 } from '@angular/fire/auth';
 import { Router } from '@angular/router';
+import { BehaviorSubject, Observable, from } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -15,6 +16,9 @@ export class AuthService {
   auth = inject(Auth);
   router = inject(Router);
   user!: User;
+  loggedInUser: BehaviorSubject<User | null> = new BehaviorSubject<User | null>(
+    null
+  );
 
   async registerWithEmailAndPassword(email: string, password: string) {
     await createUserWithEmailAndPassword(this.auth, email, password);
@@ -37,6 +41,10 @@ export class AuthService {
 
   getCurrentUser(): User {
     const userString = localStorage.getItem('user');
+    this.loggedInUser = JSON.parse(userString!);
+
+    console.log(this.loggedInUser);
+
     return userString ? JSON.parse(userString) : null;
   }
 

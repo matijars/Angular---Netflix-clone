@@ -3,6 +3,13 @@
   <p>Watch anywhere. Cancel anytime.</p>
 </div>
 
+@if (this.authService.isLoggedIn()) {
+
+<button class="mat-button browse-btn" routerLink="/movies">
+  Browse movies
+</button>
+
+} @else {
 <div class="landing-form-wrapper">
   <h3>Ready to watch? Enter your email and password to create account.</h3>
   <form
@@ -25,3 +32,4 @@
     </button>
   </form>
 </div>
+}

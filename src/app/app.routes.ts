@@ -1,25 +1,13 @@
 import { Routes } from '@angular/router';
+import { canActivate } from './services/auth.guard';
+import { HomeComponent } from './pages/home/home.component';
+import { LoginComponent } from './pages/login/login.component';
+import { MoviesComponent } from './pages/movies/movies.component';
 
 export const routes: Routes = [
-  {
-    path: '',
-    loadComponent: () =>
-      import('./pages/home/home.component').then((m) => m.HomeComponent),
-  },
-
-  {
-    path: 'login',
-    loadComponent: () =>
-      import('./pages/login/login.component').then((m) => m.LoginComponent),
-  },
-
-  {
-    path: 'movies',
-    loadComponent: () =>
-      import('./pages/movies/movies.component').then((m) => m.MoviesComponent),
-  },
-  {
-    path: '**',
-    redirectTo: '',
-  },
+  { path: '', redirectTo: '', pathMatch: 'full' },
+  { path: '', component: HomeComponent },
+  { path: 'login', component: LoginComponent, canActivate: [canActivate] },
+  { path: 'movies', component: MoviesComponent, canActivate: [canActivate] },
+  { path: '**', redirectTo: '', component: HomeComponent },
 ];
