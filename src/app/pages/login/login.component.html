@@ -1,9 +1,13 @@
-<div class="header-logo">
-  <img src="../../../assets/matflix-logo.png" alt="Matflix logo" />
-</div>
-
-<div class="login-card">
-  <h3>Sign in</h3>
-
-  <button (click)="onSignInWithGoogle()">Sign in with Google</button>
+<div class="background-section mat-login">
+  <app-header></app-header>
+  <div class="login-card">
+    <button
+      class="google-btn"
+      (click)="signInWithGoogle()"
+      style="width: 200px"
+    >
+      <img src="../../../assets/google-icon.png" alt="" />
+      Sign in with Google
+    </button>
+  </div>
 </div>

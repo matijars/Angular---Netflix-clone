@@ -7,7 +7,6 @@ import {
   User,
 } from '@angular/fire/auth';
 import { Router } from '@angular/router';
-import { BehaviorSubject, Observable, from } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -15,20 +14,27 @@ import { BehaviorSubject, Observable, from } from 'rxjs';
 export class AuthService {
   auth = inject(Auth);
   router = inject(Router);
-  user!: User;
-  loggedInUser: BehaviorSubject<User | null> = new BehaviorSubject<User | null>(
-    null
-  );
 
   async registerWithEmailAndPassword(email: string, password: string) {
     await createUserWithEmailAndPassword(this.auth, email, password);
-    this.router.navigate(['/movies']);
+    this.router.navigate(['movies']);
   }
 
   async signInWithGoogle() {
-    const googleProvider = new GoogleAuthProvider();
-    googleProvider.setCustomParameters({ prompt: 'select_account' });
-    await signInWithPopup(this.auth, googleProvider);
+    try {
+      const googleProvider = new GoogleAuthProvider();
+      googleProvider.setCustomParameters({ prompt: 'select_account' });
+      const result = signInWithPopup(this.auth, googleProvider);
+
+      localStorage.setItem('user', JSON.stringify((await result).user));
+    } catch (error) {
+      console.error('Sign in with Google failed:', error);
+      throw error;
+    }
+    this.isLoggedIn();
+    if (this.isLoggedIn()) {
+      this.router.navigate(['movies']);
+    }
   }
 
   setUserToLocalStorage() {
@@ -41,15 +47,12 @@ export class AuthService {
 
   getCurrentUser(): User {
     const userString = localStorage.getItem('user');
-    this.loggedInUser = JSON.parse(userString!);
-
-    console.log(this.loggedInUser);
 
     return userString ? JSON.parse(userString) : null;
   }
 
   isLoggedIn(): boolean {
-    return this.getCurrentUser() !== null;
+    return !!this.getCurrentUser();
   }
 
   async signOut() {

@@ -8,8 +8,8 @@
   </div>
 
   <ul class="header-links">
-    <span>{{ this.authService.loggedInUser }}</span>
-    @if (!this.isLoggedIn()) {
+    <span>{{ this.loggedInUser?.email }}</span>
+    @if (!this.loggedInUser && !shouldRenderContent()) {
     <button
       class="mat-button"
       routerLink="/login"
@@ -17,7 +17,7 @@
     >
       Sign in
     </button>
-    } @else {
+    } @else if (this.loggedInUser ) {
     <button class="mat-button sign-out" (click)="onSignOut()">Sign out</button>
     }
   </ul>
