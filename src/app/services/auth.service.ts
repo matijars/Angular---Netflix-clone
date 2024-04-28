@@ -63,5 +63,6 @@ export class AuthService {
       console.error('Error signing out:', error);
     }
     this.router.navigate(['']);
+    location.reload();
   }
 }
