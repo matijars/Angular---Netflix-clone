@@ -7,9 +7,19 @@
     />
   </div>
 
-  <ul class="header-links">
-    <span>{{ this.loggedInUser?.email }}</span>
-    @if (!this.loggedInUser && !shouldRenderContent()) {
+  <div class="header-actions">
+    @if(this.loggedInUser) {
+    <span
+      >Welcome,
+      {{
+        this.loggedInUser.displayName
+          ? this.loggedInUser.displayName.split(" ").slice(0, -1)
+          : this.loggedInUser.email
+      }}</span
+    >
+    @if(this.loggedInUser.photoURL){
+    <img [src]="this.loggedInUser.photoURL" alt="User photo" />
+    } } @if (!this.loggedInUser && !shouldRenderContent()) {
     <button
       class="mat-button"
       routerLink="/login"
@@ -17,8 +27,8 @@
     >
       Sign in
     </button>
-    } @else if (this.loggedInUser ) {
+    } @else if (this.loggedInUser) {
     <button class="mat-button sign-out" (click)="onSignOut()">Sign out</button>
     }
-  </ul>
+  </div>
 </nav>
