@@ -1,6 +1,6 @@
 import { Component, HostBinding, inject } from '@angular/core';
 import { HeaderComponent } from '../../components/header/header.component';
-import { AuthService } from '../../services/auth.service';
+import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
   selector: 'app-login',
