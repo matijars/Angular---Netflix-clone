@@ -1,3 +1,25 @@
-<div class="background-section">
+<div class="background-section mat-movies">
   <app-header></app-header>
+
+  @if(movieList){
+  <div>
+    <h3>Most Popular</h3>
+    <div class="keen-slider mat-slider" #sliderRef>
+      @for (movie of movieList; track $index) {
+      <div
+        class="keen-slider__slide mat-slide"
+        [style.backgroundImage]="
+          'url(https://image.tmdb.org/t/p/w500' + movie.poster_path + ')'
+        "
+      >
+        <span class="slide-title">{{ movie.title }}</span>
+      </div>
+
+      }
+    </div>
+  </div>
+
+  } @else {
+  <p>Loading...</p>
+  }
 </div>

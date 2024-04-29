@@ -6,7 +6,7 @@ import {
   inject,
 } from '@angular/core';
 import { Router, RouterLink, RouterModule } from '@angular/router';
-import { AuthService } from '../../services/auth.service';
+import { AuthService } from '../../services/auth/auth.service';
 import { User } from 'firebase/auth';
 
 @Component({
