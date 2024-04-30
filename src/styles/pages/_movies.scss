@@ -2,15 +2,22 @@
   height: 100vh;
   overflow: hidden;
 
+  .mat-slider-wrapper {
+    margin-top: 30px;
+    margin-left: 10%;
+    overflow: hidden;
+  }
+
   h3 {
-    color: white;
-    margin: 0% 10% 1% 10%;
+    color: $color-white;
+    position: absolute;
+    top: 0px;
   }
 
   .mat-slider {
-    color: white;
-    // margin: 0% 10%;
-    overflow: hidden;
+    max-width: 1200px;
+    overflow: visible;
+    padding-top: 30px;
 
     .mat-slide {
       display: flex;
@@ -21,9 +28,7 @@
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
-      background-attachment: fixed; /* Keeps the background fixed even when scrolling */
       height: 300px;
-      // min-width: 200px !important;
 
       .slide-title {
         padding: 10px;
@@ -33,5 +38,11 @@
         background-color: rgba(0, 0, 0, 0.5);
       }
     }
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .mat-slider-wrapper {
+    margin-left: 5% !important;
   }
 }
