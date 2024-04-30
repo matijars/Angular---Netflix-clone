@@ -1,18 +1,64 @@
 <div class="background-section mat-movies">
   <app-header></app-header>
 
-  @if(movieList){
+  <!-- MOST POPULAR -->
+  @if(popularMovieList){
   <div class="mat-slider-wrapper">
-    <div class="keen-slider mat-slider" #sliderRef>
+    <div class="keen-slider mat-slider" #popularSliderRef>
       <h3>Most Popular</h3>
-      @for (movie of movieList; track $index) {
+      @for (movie of popularMovieList; track $index) {
       <div
         class="keen-slider__slide mat-slide"
         [style.backgroundImage]="
           'url(https://image.tmdb.org/t/p/w500' + movie.poster_path + ')'
         "
       >
-        <!-- <span class="slide-title">{{ movie.title }}</span> -->
+        <span class="slide-title">{{ movie.title }}</span>
+      </div>
+
+      }
+    </div>
+  </div>
+
+  } @else {
+  <p>Loading...</p>
+  }
+
+  <!-- UPCOMING -->
+  @if(upcomingMovieList){
+  <div class="mat-slider-wrapper">
+    <div class="keen-slider mat-slider" #upcomingSliderRef>
+      <h3>Upcoming</h3>
+      @for (movie of upcomingMovieList; track $index) {
+      <div
+        class="keen-slider__slide mat-slide"
+        [style.backgroundImage]="
+          'url(https://image.tmdb.org/t/p/w500' + movie.poster_path + ')'
+        "
+      >
+        <span class="slide-title">{{ movie.title }}</span>
+      </div>
+      }
+    </div>
+  </div>
+
+  } @else {
+  <p>Loading...</p>
+  }
+
+  <!-- TOP RATED -->
+  @if(topRatedMovieList){
+  <div class="mat-slider-wrapper">
+    <div class="keen-slider mat-slider" #topRatedSliderRef>
+      <h3>Top Rated</h3>
+      @for (movie of topRatedMovieList; track $index) {
+      <div
+        class="keen-slider__slide mat-slide"
+        [style.backgroundImage]="
+          'url(https://image.tmdb.org/t/p/w500' + movie.poster_path + ')'
+        "
+      >
+        <span class="slide-title">{{ movie.title }}</span>
       </div>
 
       }

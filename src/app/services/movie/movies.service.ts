@@ -16,4 +16,20 @@ export class MovieService {
 
     return this.http.get(url);
   }
+
+  getTopRatedMovies(): Observable<any> {
+    const url =
+      `https://api.themoviedb.org/3/movie/top_rated?api_key=` +
+      this.tmdb.api_key;
+
+    return this.http.get(url);
+  }
+
+  getUpcomingMovies(): Observable<any> {
+    const url =
+      `https://api.themoviedb.org/3/movie/upcoming?api_key=` +
+      this.tmdb.api_key;
+
+    return this.http.get(url);
+  }
 }
