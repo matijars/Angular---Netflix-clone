@@ -10,11 +10,13 @@ import {
 import { HeaderComponent } from '../../components/header/header.component';
 import { MovieService } from '../../services/movie/movies.service';
 import KeenSlider, { KeenSliderInstance } from 'keen-slider';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-movies',
   standalone: true,
   imports: [HeaderComponent],
+  providers: [Router],
   templateUrl: './movies.component.html',
   styleUrl: './movies.component.scss',
 })
@@ -26,6 +28,7 @@ export class MoviesComponent implements OnInit {
 
   cdr = inject(ChangeDetectorRef);
   movieService = inject(MovieService);
+  router = inject(Router);
   popularMovieList: any[] = [];
   topRatedMovieList: any[] = [];
   upcomingMovieList: any[] = [];
@@ -221,5 +224,9 @@ export class MoviesComponent implements OnInit {
       // loop: true,
       mode: 'snap',
     });
+  }
+
+  goToMovieDetails(movieId: string) {
+    this.router.navigate(['movies', movieId]);
   }
 }
