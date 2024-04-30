@@ -8,6 +8,7 @@
       <h3>Most Popular</h3>
       @for (movie of popularMovieList; track $index) {
       <div
+        (click)="goToMovieDetails(movie.id)"
         class="keen-slider__slide mat-slide"
         [style.backgroundImage]="
           'url(https://image.tmdb.org/t/p/w500' + movie.poster_path + ')'
@@ -31,6 +32,7 @@
       <h3>Upcoming</h3>
       @for (movie of upcomingMovieList; track $index) {
       <div
+        (click)="goToMovieDetails(movie.id)"
         class="keen-slider__slide mat-slide"
         [style.backgroundImage]="
           'url(https://image.tmdb.org/t/p/w500' + movie.poster_path + ')'
@@ -53,6 +55,7 @@
       <h3>Top Rated</h3>
       @for (movie of topRatedMovieList; track $index) {
       <div
+        (click)="goToMovieDetails(movie.id)"
         class="keen-slider__slide mat-slide"
         [style.backgroundImage]="
           'url(https://image.tmdb.org/t/p/w500' + movie.poster_path + ')'

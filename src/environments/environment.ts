@@ -11,6 +11,6 @@ export const environment = {
 
   tmdb: {
     api_key: 'a97c8c6c69deb1118aa07fe599c940d7',
-    base_url: 'https://api.themoviedb.org/3/',
+    movie_base_url: 'https://api.themoviedb.org/3/movie/',
   },
 };
