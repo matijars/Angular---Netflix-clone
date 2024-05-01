@@ -1,18 +1,6 @@
 <div class="background-section mat-movies">
   <app-header></app-header>
-
-  @if(movieDetails){
-  <div class="movie-details" style="text-align: center; color: white">
-    <img
-      [src]="'https://image.tmdb.org/t/p/w500/' + movieDetails.backdrop_path"
-      alt=""
-    />
-    <h1>{{ movieDetails.title }}</h1>
-    <span>Rating | {{ movieDetails.vote_average }}</span> <br />
-    <span>Overview | {{ movieDetails.overview }}</span> <br />
-    <span>Release date | {{ movieDetails.release_date }}</span> <br />
-    <span>Runtime | {{ movieDetails.runtime }} min</span>
-  </div>
-
-  }
+  <app-movie-details-card
+    [movieDetails]="movieDetails"
+  ></app-movie-details-card>
 </div>

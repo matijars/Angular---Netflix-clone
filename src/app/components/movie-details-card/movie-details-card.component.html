@@ -1,0 +1,42 @@
+@if(movieDetails){
+<div class="movie-details-card">
+  <div class="info-section">
+    <div class="movie-header">
+      <img
+        class="movie-poster"
+        [src]="'https://image.tmdb.org/t/p/w500/' + movieDetails.poster_path"
+      />
+      <h1 class="movie-title">{{ movieDetails.title }}</h1>
+      <h4 class="movie-year">
+        {{ movieDetails.release_date | date : "yyyy" }}
+      </h4>
+      <span class="movie-minutes"> {{ movieDetails.runtime }} min</span>
+      @for (genre of movieDetails.genres; track $index) {
+      <p class="movie-genre">{{ genre.name }}</p>
+      }
+    </div>
+    <div class="movie-desc">
+      <span class="movie-tagline">{{ movieDetails.tagline }}</span>
+      <p class="movie-overview">
+        {{ movieDetails.overview }}
+      </p>
+    </div>
+    <div class="movie-social">
+      <ul>
+        <li><i class="material-icons">share</i></li>
+        <li><i class="material-icons"></i></li>
+        <li><i class="material-icons">chat-bubble</i></li>
+      </ul>
+    </div>
+  </div>
+  <div
+    class="blur-back card-background"
+    [style.background]="
+      'url(' +
+      'https://image.tmdb.org/t/p/w500/' +
+      movieDetails.backdrop_path +
+      ')'
+    "
+  ></div>
+</div>
+}
