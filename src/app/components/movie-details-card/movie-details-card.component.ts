@@ -1,16 +1,14 @@
 import { Component, HostBinding, Input } from '@angular/core';
-import { DatePipe } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import {
-  faStar,
-  faHome,
-  IconDefinition,
-} from '@fortawesome/free-solid-svg-icons';
+import { faStar, faHome } from '@fortawesome/free-solid-svg-icons';
+import { DatePipe } from '@angular/common';
+import { KFormatPipe } from '../../pipes/k-format.pipe';
+import { OneDecimalPipe } from '../../pipes/one-decimal.pipe';
 
 @Component({
   selector: 'app-movie-details-card',
   standalone: true,
-  imports: [DatePipe, FontAwesomeModule],
+  imports: [DatePipe, KFormatPipe, OneDecimalPipe, FontAwesomeModule],
   templateUrl: './movie-details-card.component.html',
   styleUrl: './movie-details-card.component.scss',
 })
@@ -20,8 +18,4 @@ export class MovieDetailsCardComponent {
 
   faStar = faStar;
   faHome = faHome;
-
-  renderStars(rating: number): IconDefinition[] {
-    return Array(Math.min(Math.floor(rating), 10)).fill(faStar);
-  }
 }

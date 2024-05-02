@@ -21,6 +21,11 @@
     z-index: 2;
     border-radius: 10px;
 
+    .info-wrapper {
+      display: flex;
+      flex-direction: column;
+    }
+
     .movie-header {
       position: relative;
       padding: 25px 25px 0px 25px;
@@ -31,33 +36,32 @@
         font-weight: 600;
       }
 
-      .movie-year {
-        color: $color-primary;
-        font-weight: 600;
+      .year-minutes {
+        display: flex;
+        align-items: center;
+        gap: 5px;
 
-        span {
-          margin-right: 10px;
+        .year {
+          color: $color-primary;
+          font-weight: 600;
         }
-        .star-icon {
-          color: gold;
-        }
-      }
 
-      .movie-minutes {
-        display: inline-block;
-        margin-top: 10px;
-        color: $color-white;
-        font-size: 14px;
-        padding: 5px;
-        border-radius: 5px;
-        border: 1px solid rgba(255, 255, 255, 0.13);
+        .movie-minutes {
+          color: $color-white;
+          font-size: 14px;
+          padding: 5px;
+          border-radius: 5px;
+          border: 1px solid rgba(255, 255, 255, 0.13);
+        }
       }
 
       .movie-genre {
-        display: inline-block;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
         color: #cee4fd;
-        margin-left: 10px;
         font-size: 14px;
+        margin-top: 5px;
       }
 
       .movie-poster {
@@ -70,7 +74,7 @@
     }
 
     .movie-desc {
-      padding: 25px 25px 25px 25px;
+      padding: 20px 25px 20px 25px;
       height: 50%;
 
       .movie-tagline {
@@ -85,29 +89,72 @@
       }
     }
 
-    .movie-social {
+    .movie-card-footer {
       display: flex;
-      height: 10%;
+      justify-content: space-between;
+      padding: 0px 15px 20px 15px;
       padding-left: 15px;
       padding-bottom: 20px;
+      width: 50%;
 
-      a {
-        color: $color-social;
-        transition: color 0.2s;
-        font-size: 23px;
-        margin: 0px 3px 0px 10px;
+      .movie-social {
+        display: flex;
 
-        &:hover {
-          color: $color-social-hover;
+        a {
+          display: flex;
+          align-items: center;
+          color: $color-social;
+          transition: color 0.2s;
+          font-size: 23px;
+          margin: 0px 3px 0px 10px;
+
+          &:hover {
+            color: $color-social-hover;
+          }
+        }
+
+        svg {
+          width: 23px;
+          fill: $color-social;
+          transition: fill 0.2s;
+
+          &:hover {
+            fill: $color-social-hover;
+          }
         }
       }
-      svg {
-        width: 23px;
-        fill: $color-social;
-        transition: fill 0.2s;
 
-        &:hover {
-          fill: $color-social-hover;
+      .rating {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+
+        .rating-container {
+          display: flex;
+          flex-direction: column;
+
+          .average {
+            color: $color-white;
+            font-size: 17px;
+            font-weight: 800;
+
+            .of-ten {
+              font-weight: 600;
+              font-size: 13px;
+              color: $color-social;
+            }
+          }
+
+          .count {
+            font-weight: 600;
+            font-size: 13px;
+            color: $color-social;
+          }
+        }
+
+        .star-icon {
+          font-size: 20px;
+          color: gold;
         }
       }
     }
@@ -129,7 +176,7 @@
 
 @media screen and (min-width: 768px) {
   .movie-header {
-    width: 60%;
+    width: 55%;
   }
 
   .movie-desc {
@@ -169,5 +216,9 @@
   .info-section {
     background: linear-gradient(to top, rgb(20, 20, 19) 50%, transparent 100%);
     display: inline-grid;
+  }
+
+  .movie-card-footer {
+    width: 100% !important;
   }
 }
