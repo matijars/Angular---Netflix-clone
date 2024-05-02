@@ -1,11 +1,11 @@
 .mat-movies {
   overflow: hidden;
-  height: fit-content;
+  min-height: 100vh;
+  height: auto;
   padding-bottom: 30px;
 
   .mat-slider-wrapper {
-    margin-top: 30px;
-    margin-left: 10%;
+    margin: 30px 0px 15px 10%;
   }
 
   h3 {
