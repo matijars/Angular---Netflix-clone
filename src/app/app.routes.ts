@@ -17,7 +17,7 @@ export const routes: Routes = [
     component: MovieDetailsComponent,
     canActivate: [canActivateGuard],
   },
-  { path: 'login', component: LoginComponent },
+  { path: 'login', component: LoginComponent, canActivate: [canActivateGuard] },
 
   { path: '', redirectTo: '', pathMatch: 'full' },
   { path: '**', component: HomeComponent },

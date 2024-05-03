@@ -1,11 +1,13 @@
 .mat-landing {
   display: flex;
+  flex: 2;
   gap: 1.1rem;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100%;
   color: $color-white;
+  margin-bottom: 30px;
 }
 
 .landing-text {
