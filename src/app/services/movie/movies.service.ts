@@ -1,5 +1,5 @@
 import { Injectable, inject } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 
@@ -30,6 +30,12 @@ export class MovieService {
 
   getMovieDetails(movieId: string): Observable<any> {
     const url = `${this.tmdb.movie_base_url}${movieId}?api_key=${this.tmdb.api_key}`;
+
+    return this.http.get(url);
+  }
+
+  searchMovie(movieName: string): Observable<any> {
+    const url = `${this.tmdb.search_movie_url}${movieName}&api_key=${this.tmdb.api_key}`;
 
     return this.http.get(url);
   }
