@@ -1,5 +1,26 @@
 <div class="background-section mat-movies">
-  <app-header></app-header>
+  <app-header (searchMovieEvent)="getSearchedMovieList($event)"></app-header>
+
+  <!-- SEARCHED -->
+  @if(searchedMovieList && shouldRenderSearch){
+  <div class="mat-slider-wrapper">
+    <div class="keen-slider mat-slider" #searchedSliderRef>
+      <h3>Searched</h3>
+      @for (movie of searchedMovieList; track $index) {
+      <div
+        (click)="goToMovieDetails(movie.id)"
+        class="keen-slider__slide mat-slide"
+        [style.backgroundImage]="
+          'url(https://image.tmdb.org/t/p/w500' + movie.poster_path + ')'
+        "
+      >
+        <span class="slide-title">{{ movie.title }}</span>
+      </div>
+
+      }
+    </div>
+  </div>
+  }
 
   <!-- MOST POPULAR -->
   @if(popularMovieList){

@@ -31,27 +31,69 @@
 
   .header-actions {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
+    justify-content: center;
     gap: 1em;
     font-weight: bold;
     font-size: 0.9rem;
     margin: 0 auto;
 
-    & span {
-      font-size: 0.9rem;
-      color: $color-white;
-      word-break: break-word;
-      text-wrap: wrap;
-    }
-
-    & img {
-      border-radius: 50%;
-      width: 35px;
-    }
-
     & button {
       font-weight: bold;
       text-wrap: nowrap;
+    }
+
+    .info-container {
+      display: flex;
+      align-items: center;
+      gap: 1em;
+
+      & span {
+        font-size: 0.9rem;
+        color: $color-white;
+        word-break: break-word;
+        text-wrap: wrap;
+      }
+
+      & img {
+        border-radius: 50%;
+        width: 35px;
+      }
+    }
+
+    .search-container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1em;
+
+      .search-movie-input {
+        color: $color-white;
+        min-height: 2rem;
+        padding: 0rem 0.5rem;
+        background-color: rgba(22, 22, 22, 0.5);
+        border: 1px solid rgb(118, 118, 118);
+        border-radius: 0.3rem;
+        font-size: 0.9rem;
+        font-weight: 700;
+
+        &::placeholder {
+          font-size: 0.8rem;
+        }
+      }
+    }
+
+    .info-actions-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .actions-container {
+      display: flex;
+      align-items: center;
     }
   }
 }
