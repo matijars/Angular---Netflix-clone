@@ -34,7 +34,6 @@ export class MovieDetailsComponent implements OnInit {
 
     if (movieId)
       this.movieService.getMovieDetails(movieId).subscribe((movie) => {
-        console.log(movie);
         this.movieDetails = movie;
       });
   }

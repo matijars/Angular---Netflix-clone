@@ -12,6 +12,7 @@ import { User } from 'firebase/auth';
 import { FormsModule } from '@angular/forms';
 import { MovieService } from '../../services/movie/movies.service';
 import { CommonModule } from '@angular/common';
+import { SearchService } from '../../services/search/search.service';
 
 @Component({
   selector: 'app-header',
@@ -28,6 +29,7 @@ export class HeaderComponent implements OnInit {
 
   authService = inject(AuthService);
   movieService = inject(MovieService);
+  searchService = inject(SearchService);
   router = inject(Router);
   loggedInUser: User | null | undefined;
 

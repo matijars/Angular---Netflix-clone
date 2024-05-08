@@ -14,6 +14,7 @@ import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { LoaderComponent } from '../../components/loader/loader.component';
 import { LoaderService } from '../../services/loader/loader.service';
+import { SearchService } from '../../services/search/search.service';
 
 @Component({
   selector: 'app-movies',
@@ -34,17 +35,20 @@ export class MoviesComponent implements OnInit {
   movieService = inject(MovieService);
   router = inject(Router);
   loaderService = inject(LoaderService);
+  searchService = inject(SearchService);
   popularMovieList: any[] = [];
   topRatedMovieList: any[] = [];
   upcomingMovieList: any[] = [];
   searchedMovieList: any[] = [];
   slider: KeenSliderInstance | null = null;
   shouldRenderSearch: boolean = false;
+  storedMovieName: string = '';
 
   ngOnInit() {
     this.getPopularMovieList();
     this.getTopRatedMovieList();
     this.getUpcomingMovieList();
+    this.getStoredMovieList();
   }
 
   getPopularMovieList() {
@@ -80,7 +84,15 @@ export class MoviesComponent implements OnInit {
       this.searchedMovieList = filteredMovies;
       this.cdr.detectChanges();
       this.searchedSliderInit();
+
+      this.searchService.setSearchQuery(movieName);
+      this.searchService.setSearchResults(filteredMovies);
     });
+  }
+
+  getStoredMovieList(): void {
+    this.storedMovieName = this.searchService.getSearchQuery();
+    this.storedMovieName && this.getSearchedMovieList(this.storedMovieName);
   }
 
   initializeSlider(sliderRef: ElementRef): void {

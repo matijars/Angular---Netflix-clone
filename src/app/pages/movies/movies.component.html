@@ -5,7 +5,7 @@
   }
 
   <!-- SEARCHED -->
-  @if(searchedMovieList && shouldRenderSearch){
+  @if(searchedMovieList.length && shouldRenderSearch){
   <div class="mat-slider-wrapper">
     <div class="keen-slider mat-slider" #searchedSliderRef>
       <h3>Searched</h3>

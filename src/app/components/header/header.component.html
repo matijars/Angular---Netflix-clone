@@ -15,6 +15,7 @@
         #input
         placeholder="Movie name"
         (keyup.enter)="searchMovie(input.value)"
+        [value]="this.searchService.getSearchQuery()"
       />
       <button (click)="searchMovie(input.value)" class="mat-button">
         Search

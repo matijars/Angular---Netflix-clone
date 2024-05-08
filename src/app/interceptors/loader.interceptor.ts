@@ -11,7 +11,6 @@ export const loaderInterceptor: HttpInterceptorFn = (req, next) => {
   return next(req).pipe(
     finalize(() => {
       loaderService.hideLoader();
-      console.log('Interceptor: Request finished');
     })
   );
 };
