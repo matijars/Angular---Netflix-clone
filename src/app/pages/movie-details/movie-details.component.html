@@ -1,6 +1,11 @@
 <div class="background-section mat-movies">
   <app-header></app-header>
+
+  @if(loaderService.loading){
+  <app-loader></app-loader>
+  } @else {
   <app-movie-details-card
     [movieDetails]="movieDetails"
   ></app-movie-details-card>
+  }
 </div>

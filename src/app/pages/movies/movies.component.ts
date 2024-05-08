@@ -12,14 +12,16 @@ import { MovieService } from '../../services/movie/movies.service';
 import KeenSlider, { KeenSliderInstance } from 'keen-slider';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { LoaderComponent } from '../../components/loader/loader.component';
+import { LoaderService } from '../../services/loader/loader.service';
 
 @Component({
   selector: 'app-movies',
   standalone: true,
-  imports: [HeaderComponent, CommonModule],
   providers: [Router],
   templateUrl: './movies.component.html',
   styleUrl: './movies.component.scss',
+  imports: [HeaderComponent, CommonModule, LoaderComponent],
 })
 export class MoviesComponent implements OnInit {
   @HostBinding('class') class = 'mat-movies';
@@ -31,6 +33,7 @@ export class MoviesComponent implements OnInit {
   cdr = inject(ChangeDetectorRef);
   movieService = inject(MovieService);
   router = inject(Router);
+  loaderService = inject(LoaderService);
   popularMovieList: any[] = [];
   topRatedMovieList: any[] = [];
   upcomingMovieList: any[] = [];

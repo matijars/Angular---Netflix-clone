@@ -1,5 +1,8 @@
 <div class="background-section mat-movies">
   <app-header (searchMovieEvent)="getSearchedMovieList($event)"></app-header>
+  @if(loaderService.loading){
+  <app-loader></app-loader>
+  }
 
   <!-- SEARCHED -->
   @if(searchedMovieList && shouldRenderSearch){
