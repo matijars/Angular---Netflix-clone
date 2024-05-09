@@ -8,16 +8,16 @@
   </div>
 
   <div class="header-actions">
-    <div *ngIf="shouldRenderMovieSearch()" class="search-container">
+    <div *ngIf="shouldRenderMediaSearch()" class="search-container">
       <input
-        class="search-movie-input"
+        class="search-media-input"
         type="text"
         #input
-        placeholder="Movie name"
-        (keyup.enter)="searchMovie(input.value)"
-        [value]="this.searchService.getSearchQuery()"
+        [placeholder]="getPlaceholderText()"
+        (keyup.enter)="searchMedia(input.value)"
+        [value]="getSerachedMediaVlaue()"
       />
-      <button (click)="searchMovie(input.value)" class="mat-button">
+      <button (click)="searchMedia(input.value)" class="mat-button">
         Search
       </button>
     </div>

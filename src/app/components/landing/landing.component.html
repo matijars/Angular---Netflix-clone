@@ -5,9 +5,11 @@
 
 @if (this.authService.isLoggedIn()) {
 
-<button class="mat-button browse-btn" routerLink="/movies">
-  Browse movies
-</button>
+<div class="landing-actions">
+  <button class="mat-button browse-btn" routerLink="/movies">Movies</button>
+
+  <button class="mat-button browse-btn" routerLink="/tv-shows">TV Shows</button>
+</div>
 
 } @else {
 <div class="landing-form-wrapper">

@@ -1,0 +1,92 @@
+<div class="background-section mat-media">
+  <app-header (searchMediaEvent)="getSearchedMediaList($event)"></app-header>
+  @if(loaderService.loading){
+  <app-loader></app-loader>
+  }
+
+  <!-- SEARCHED -->
+  @if(searchedMediaList && shouldRenderSearch){
+  <div class="mat-slider-wrapper">
+    <div class="keen-slider mat-slider" #searchedSliderRef>
+      <h3>Searched</h3>
+      @for (media of searchedMediaList; track $index) {
+      <div
+        (click)="goToMediaDetails(media.id)"
+        class="keen-slider__slide mat-slide"
+        [style.backgroundImage]="
+          'url(https://image.tmdb.org/t/p/w500' + media.poster_path + ')'
+        "
+      >
+        <span class="slide-title">{{
+          media.title ? media.title : media.name
+        }}</span>
+      </div>
+      }
+    </div>
+  </div>
+  }
+
+  <!-- POPULAR -->
+  @if(popularMediaList){
+  <div class="mat-slider-wrapper">
+    <div class="keen-slider mat-slider" #popularSliderRef>
+      <h3>Popular</h3>
+      @for (media of popularMediaList; track $index) {
+      <div
+        (click)="goToMediaDetails(media.id)"
+        class="keen-slider__slide mat-slide"
+        [style.backgroundImage]="
+          'url(https://image.tmdb.org/t/p/w500' + media.poster_path + ')'
+        "
+      >
+        <span class="slide-title">{{
+          media.title ? media.title : media.name
+        }}</span>
+      </div>
+      }
+    </div>
+  </div>
+  }
+
+  <!-- UPCOMING -->
+  @if(upcomingMediaList.length){
+  <div class="mat-slider-wrapper">
+    <div class="keen-slider mat-slider" #upcomingSliderRef>
+      <h3>Upcoming</h3>
+      @for (media of upcomingMediaList; track $index) {
+      <div
+        (click)="goToMediaDetails(media.id)"
+        class="keen-slider__slide mat-slide"
+        [style.backgroundImage]="
+          'url(https://image.tmdb.org/t/p/w500' + media.poster_path + ')'
+        "
+      >
+        <span class="slide-title">{{ media.title }}</span>
+      </div>
+      }
+    </div>
+  </div>
+  }
+
+  <!-- TOP RATED -->
+  @if(topRatedMediaList){
+  <div class="mat-slider-wrapper">
+    <div class="keen-slider mat-slider" #topRatedSliderRef>
+      <h3>Top Rated</h3>
+      @for (media of topRatedMediaList; track $index) {
+      <div
+        (click)="goToMediaDetails(media.id)"
+        class="keen-slider__slide mat-slide"
+        [style.backgroundImage]="
+          'url(https://image.tmdb.org/t/p/w500' + media.poster_path + ')'
+        "
+      >
+        <span class="slide-title">{{
+          media.title ? media.title : media.name
+        }}</span>
+      </div>
+      }
+    </div>
+  </div>
+  }
+</div>

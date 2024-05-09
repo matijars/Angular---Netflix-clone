@@ -10,25 +10,23 @@ import { Router, RouterLink, RouterModule } from '@angular/router';
 import { AuthService } from '../../services/auth/auth.service';
 import { User } from 'firebase/auth';
 import { FormsModule } from '@angular/forms';
-import { MovieService } from '../../services/movie/movies.service';
 import { CommonModule } from '@angular/common';
 import { SearchService } from '../../services/search/search.service';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  providers: [Router, RouterLink, AuthService, MovieService],
+  providers: [Router, RouterLink, AuthService],
   imports: [RouterModule, FormsModule, CommonModule],
 
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })
 export class HeaderComponent implements OnInit {
-  @HostBinding('class.matflix-header') class = true;
-  @Output() searchMovieEvent = new EventEmitter<string>();
+  @HostBinding('class') class = 'mat-header';
+  @Output() searchMediaEvent = new EventEmitter<string>();
 
   authService = inject(AuthService);
-  movieService = inject(MovieService);
   searchService = inject(SearchService);
   router = inject(Router);
   loggedInUser: User | null | undefined;
@@ -41,12 +39,22 @@ export class HeaderComponent implements OnInit {
     return this.router.url.includes('/login');
   }
 
-  shouldRenderMovieSearch(): boolean {
-    return this.router.url === '/movies';
+  shouldRenderMediaSearch(): boolean {
+    return this.router.url === '/movies' || this.router.url === '/tv-shows';
   }
 
-  searchMovie(movieName: string) {
-    movieName && this.searchMovieEvent.emit(movieName);
+  getPlaceholderText(): string {
+    return this.router.url.includes('/movies') ? 'Movie name' : 'TV Show name';
+  }
+
+  getSerachedMediaVlaue(): string {
+    return this.router.url.includes('/movies')
+      ? this.searchService.getMovieSearchQuery()
+      : this.searchService.getTVShowSearchQuery();
+  }
+
+  searchMedia(mediaName: string) {
+    mediaName && this.searchMediaEvent.emit(mediaName);
   }
 
   onSignOut() {

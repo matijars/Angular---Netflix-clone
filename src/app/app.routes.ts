@@ -1,20 +1,30 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
-import { MoviesComponent } from './pages/movies/movies.component';
+import { MediaListComponent } from './pages/media-list/media-list.component';
 import { LoginComponent } from './pages/login/login.component';
 import { canActivateGuard } from './guards/auth.guard';
-import { MovieDetailsComponent } from './pages/movie-details/movie-details.component';
+import { MediaDetailsComponent } from './pages/media-details/media-details.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
   {
     path: 'movies',
-    component: MoviesComponent,
+    component: MediaListComponent,
     canActivate: [canActivateGuard],
   },
   {
     path: 'movies/:id',
-    component: MovieDetailsComponent,
+    component: MediaDetailsComponent,
+    canActivate: [canActivateGuard],
+  },
+  {
+    path: 'tv-shows',
+    component: MediaListComponent,
+    canActivate: [canActivateGuard],
+  },
+  {
+    path: 'tv-shows/:id',
+    component: MediaDetailsComponent,
     canActivate: [canActivateGuard],
   },
   { path: 'login', component: LoginComponent, canActivate: [canActivateGuard] },

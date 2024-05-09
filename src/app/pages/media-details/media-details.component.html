@@ -1,0 +1,9 @@
+<div class="background-section mat-media">
+  <app-header></app-header>
+
+  @if(loaderService.loading){
+  <app-loader></app-loader>
+  } @else {
+  <app-media-card [mediaDetails]="mediaDetails"></app-media-card>
+  }
+</div>

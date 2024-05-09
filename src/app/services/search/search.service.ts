@@ -4,22 +4,40 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class SearchService {
-  private searchQuery: string = '';
-  private searchResults: any[] = [];
+  private movieSearchQuery: string = '';
+  private movieSearchResults: any[] = [];
+  private tvShowSearchQuery: string = '';
+  private tvShowSearchResults: any[] = [];
 
-  setSearchQuery(query: string): void {
-    this.searchQuery = query;
+  setMovieSearchQuery(query: string): void {
+    this.movieSearchQuery = query;
   }
 
-  getSearchQuery(): string {
-    return this.searchQuery;
+  getMovieSearchQuery(): string {
+    return this.movieSearchQuery;
   }
 
-  setSearchResults(results: any[]): void {
-    this.searchResults = results;
+  setMovieSearchResults(results: any[]): void {
+    this.movieSearchResults = results;
   }
 
-  getSearchResults(): any[] {
-    return this.searchResults;
+  getMovieSearchResults(): any[] {
+    return this.movieSearchResults;
+  }
+
+  setTVShowSearchQuery(query: string): void {
+    this.tvShowSearchQuery = query;
+  }
+
+  getTVShowSearchQuery(): string {
+    return this.tvShowSearchQuery;
+  }
+
+  setTVShowSearchResults(results: any[]): void {
+    this.tvShowSearchResults = results;
+  }
+
+  getTVShowSearchResults(): any[] {
+    return this.tvShowSearchResults;
   }
 }

@@ -14,7 +14,6 @@ import { Router, RouterLink, RouterModule } from '@angular/router';
   imports: [ReactiveFormsModule, RouterModule],
   providers: [AuthService, RouterLink, Router],
   templateUrl: './landing.component.html',
-  styleUrl: './landing.component.scss',
 })
 export class LandingComponent implements OnInit {
   @HostBinding('class') class = 'mat-landing';

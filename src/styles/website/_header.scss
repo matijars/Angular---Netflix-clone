@@ -1,4 +1,4 @@
-.matflix-header {
+.mat-header {
   display: flex;
   justify-content: center;
   color: $color-primary;
@@ -68,7 +68,7 @@
       flex-wrap: wrap;
       gap: 1em;
 
-      .search-movie-input {
+      .search-media-input {
         color: $color-white;
         min-height: 2rem;
         padding: 0rem 0.5rem;

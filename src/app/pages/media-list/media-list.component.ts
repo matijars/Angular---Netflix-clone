@@ -8,7 +8,7 @@ import {
   inject,
 } from '@angular/core';
 import { HeaderComponent } from '../../components/header/header.component';
-import { MovieService } from '../../services/movie/movies.service';
+import { MediaService } from '../../services/media/media.service';
 import KeenSlider, { KeenSliderInstance } from 'keen-slider';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -17,14 +17,13 @@ import { LoaderService } from '../../services/loader/loader.service';
 import { SearchService } from '../../services/search/search.service';
 
 @Component({
-  selector: 'app-movies',
+  selector: 'app-media-list',
   standalone: true,
   providers: [Router],
-  templateUrl: './movies.component.html',
-  styleUrl: './movies.component.scss',
+  templateUrl: './media-list.component.html',
   imports: [HeaderComponent, CommonModule, LoaderComponent],
 })
-export class MoviesComponent implements OnInit {
+export class MediaListComponent implements OnInit {
   @HostBinding('class') class = 'mat-movies';
   @ViewChild('popularSliderRef') popularSliderRef!: ElementRef<HTMLElement>;
   @ViewChild('topRatedSliderRef') topRatedSliderRef!: ElementRef<HTMLElement>;
@@ -32,67 +31,81 @@ export class MoviesComponent implements OnInit {
   @ViewChild('searchedSliderRef') searchedSliderRef!: ElementRef<HTMLElement>;
 
   cdr = inject(ChangeDetectorRef);
-  movieService = inject(MovieService);
+  mediaService = inject(MediaService);
   router = inject(Router);
   loaderService = inject(LoaderService);
   searchService = inject(SearchService);
-  popularMovieList: any[] = [];
-  topRatedMovieList: any[] = [];
-  upcomingMovieList: any[] = [];
-  searchedMovieList: any[] = [];
+  popularMediaList: any[] = [];
+  topRatedMediaList: any[] = [];
+  upcomingMediaList: any[] = [];
+  searchedMediaList: any[] = [];
   slider: KeenSliderInstance | null = null;
   shouldRenderSearch: boolean = false;
-  storedMovieName: string = '';
+  storedMediaName: string = '';
+  url: string = '';
 
   ngOnInit() {
-    this.getPopularMovieList();
-    this.getTopRatedMovieList();
-    this.getUpcomingMovieList();
-    this.getStoredMovieList();
+    this.url = this.router.url;
+    this.getPopularMediaList();
+    this.getTopRatedMediaList();
+    if (this.url === '/movies') {
+      this.getUpcomingMediaList();
+    }
+    this.getStoredMediaList();
   }
 
-  getPopularMovieList() {
-    this.movieService.getPopularMovies().subscribe((movie) => {
-      this.popularMovieList = movie.results;
+  getPopularMediaList() {
+    this.mediaService.getPopularMedia(this.url).subscribe((media) => {
+      this.popularMediaList = media.results;
       this.cdr.detectChanges();
       this.popularSliderInit();
     });
   }
 
-  getTopRatedMovieList() {
-    this.movieService.getTopRatedMovies().subscribe((movie) => {
-      this.topRatedMovieList = movie.results;
+  getTopRatedMediaList() {
+    this.mediaService.getTopRatedMedia(this.url).subscribe((media) => {
+      this.topRatedMediaList = media.results;
       this.cdr.detectChanges();
       this.topRatedSliderInit();
     });
   }
 
-  getUpcomingMovieList() {
-    this.movieService.getUpcomingMovies().subscribe((movie) => {
-      this.upcomingMovieList = movie.results;
+  getUpcomingMediaList() {
+    this.mediaService.getUpcomingMedia().subscribe((media) => {
+      this.upcomingMediaList = media.results;
       this.cdr.detectChanges();
       this.upcomingSliderInit();
     });
   }
 
-  getSearchedMovieList(movieName: string): void {
+  getSearchedMediaList(mediaName: string): void {
     this.shouldRenderSearch = true;
-    this.movieService.searchMovie(movieName).subscribe((movie) => {
-      const filteredMovies = movie.results.filter(
-        (movie: any) => movie.backdrop_path && movie.poster_path
+    this.mediaService.searchMedia(mediaName, this.url).subscribe((media) => {
+      const filteredMedia = media.results.filter(
+        (media: any) => media.backdrop_path && media.poster_path
       );
-      this.searchedMovieList = filteredMovies;
+      this.searchedMediaList = filteredMedia;
       this.cdr.detectChanges();
       this.searchedSliderInit();
 
-      this.searchService.setSearchQuery(movieName);
-      this.searchService.setSearchResults(filteredMovies);
+      if (this.url === '/movies') {
+        this.searchService.setMovieSearchQuery(mediaName);
+        this.searchService.setMovieSearchResults(filteredMedia);
+      } else {
+        this.searchService.setTVShowSearchQuery(mediaName);
+        this.searchService.setTVShowSearchResults(filteredMedia);
+      }
     });
   }
 
-  getStoredMovieList(): void {
-    this.storedMovieName = this.searchService.getSearchQuery();
-    this.storedMovieName && this.getSearchedMovieList(this.storedMovieName);
+  getStoredMediaList(): void {
+    if (this.url === '/movies') {
+      this.storedMediaName = this.searchService.getMovieSearchQuery();
+      this.storedMediaName && this.getSearchedMediaList(this.storedMediaName);
+    } else {
+      this.storedMediaName = this.searchService.getTVShowSearchQuery();
+      this.storedMediaName && this.getSearchedMediaList(this.storedMediaName);
+    }
   }
 
   initializeSlider(sliderRef: ElementRef): void {
@@ -163,7 +176,11 @@ export class MoviesComponent implements OnInit {
     this.initializeSlider(this.upcomingSliderRef);
   }
 
-  goToMovieDetails(movieId: string) {
-    this.router.navigate(['movies', movieId]);
+  goToMediaDetails(mediaId: string) {
+    if (this.url === '/movies') {
+      this.router.navigate(['movies', mediaId]);
+    } else {
+      this.router.navigate(['tv-shows', mediaId]);
+    }
   }
 }
