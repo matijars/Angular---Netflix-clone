@@ -66,7 +66,6 @@
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
-      gap: 1em;
 
       .search-media-input {
         color: $color-white;
@@ -74,13 +73,19 @@
         padding: 0rem 0.5rem;
         background-color: rgba(22, 22, 22, 0.5);
         border: 1px solid rgb(118, 118, 118);
-        border-radius: 0.3rem;
+        border-right: none;
+        border-radius: 0.3rem 0px 0px 0.3rem;
         font-size: 0.9rem;
         font-weight: 700;
+        outline: transparent;
 
         &::placeholder {
           font-size: 0.8rem;
         }
+      }
+
+      & button {
+        border-radius: 0px 5px 5px 0px;
       }
     }
 

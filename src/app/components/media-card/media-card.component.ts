@@ -22,6 +22,5 @@ export class MediaCardComponent implements OnInit {
 
   ngOnInit(): void {
     this.isMovie = !('seasons' in this.mediaDetails);
-    console.log(this.mediaDetails);
   }
 }

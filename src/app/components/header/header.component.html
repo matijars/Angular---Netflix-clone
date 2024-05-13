@@ -7,7 +7,7 @@
     />
   </div>
 
-  <div class="header-actions">
+  <div *ngIf="!shouldRenderActions()" class="header-actions">
     <div *ngIf="shouldRenderMediaSearch()" class="search-container">
       <input
         class="search-media-input"
@@ -18,9 +18,15 @@
         [value]="getSerachedMediaVlaue()"
       />
       <button (click)="searchMedia(input.value)" class="mat-button">
-        Search
+        <fa-icon [icon]="faMagnifyingGlass"></fa-icon>
       </button>
     </div>
+
+    @if (isMoviesOrTvShowsPage()) {
+    <button (click)="navigateToMoviesOrTvShows()" class="mat-button">
+      {{ getNavBtnText() }}
+    </button>
+    }
 
     <div class="info-actions-wrapper">
       <div class="info-container" *ngIf="this.loggedInUser">
