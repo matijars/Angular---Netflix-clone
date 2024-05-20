@@ -5,8 +5,10 @@ import {
   signInWithPopup,
   GoogleAuthProvider,
   User,
+  UserCredential,
 } from '@angular/fire/auth';
 import { Router } from '@angular/router';
+import { Observable, from, map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -15,9 +17,17 @@ export class AuthService {
   auth = inject(Auth);
   router = inject(Router);
 
-  async registerWithEmailAndPassword(email: string, password: string) {
-    await createUserWithEmailAndPassword(this.auth, email, password);
-    this.router.navigate(['movies']);
+  registerWithEmailAndPassword(
+    email: string,
+    password: string
+  ): Observable<void> {
+    return from(
+      createUserWithEmailAndPassword(this.auth, email, password)
+    ).pipe(
+      map((userCredential: UserCredential) => {
+        return undefined;
+      })
+    );
   }
 
   async signInWithGoogle() {

@@ -19,12 +19,54 @@
     [formGroup]="registrationForm"
     (ngSubmit)="onSubmit()"
   >
-    <input type="email" formControlName="email" placeholder="Enter email" />
-    <input
-      type="password"
-      formControlName="password"
-      placeholder="Enter password"
-    />
+    <div class="email-wrapper">
+      <input type="email" formControlName="email" placeholder="Enter email" />
+      <div
+        *ngIf="
+          registrationForm.get('email')?.invalid &&
+          (registrationForm.get('email')?.dirty ||
+            registrationForm.get('email')?.touched)
+        "
+      >
+        <small
+          class="error"
+          *ngIf="registrationForm.get('email')?.errors?.['required']"
+          >Email is required</small
+        >
+        <small
+          class="error"
+          *ngIf="registrationForm.get('email')?.errors?.['email']"
+          >Invalid email format</small
+        >
+      </div>
+    </div>
+
+    <div class="password-wrapper">
+      <input
+        type="password"
+        formControlName="password"
+        placeholder="Enter password"
+      />
+      <div
+        *ngIf="
+          registrationForm.get('password')?.invalid &&
+          (registrationForm.get('password')?.dirty ||
+            registrationForm.get('password')?.touched)
+        "
+      >
+        <small
+          class="error"
+          *ngIf="registrationForm.get('password')?.errors?.['required']"
+          >Password is required</small
+        >
+        <small
+          class="error"
+          *ngIf="registrationForm.get('password')?.errors?.['minlength']"
+          >Password must be at least 6 characters long</small
+        >
+      </div>
+    </div>
+
     <button
       type="submit"
       class="mat-button"
@@ -32,6 +74,10 @@
     >
       Sign Up
     </button>
+    <div *ngIf="errorMessage" class="http-error">
+      {{ errorMessage }}
+    </div>
   </form>
 </div>
+
 }
