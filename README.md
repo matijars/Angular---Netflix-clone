@@ -2,7 +2,7 @@
 
 <h2>About the project</h2>
 
-  <p>A <b>Matflix</b> website is a Netflix clone developed in Angular framework. It is a movie and tv show database where user can brows and search media shows. It has integrated signup and login functionalities using Firebase including Google Sign in. Utilized TMDB API to fetch data.</p>
+  <p>A <b>Matflix</b> is a Netflix clone developed using the Angular framework. It is a movie and TV show database where users can browse and search for media content. The website features integrated signup and login functionalities using Firebase, including Google Sign-In. Data is fetched utilizing the TMDB API.</p>
 
 <p>Credits for the design goes to <a href='https://www.netflix.com'>Netflix</a></p>
 
