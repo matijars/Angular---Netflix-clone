@@ -20,9 +20,9 @@
 
 ![image](https://github.com/matijars/Matflix/assets/49566971/b206bb9e-1642-4409-bb4a-737328757c39)
 
-![image](https://github.com/matijars/Matflix/assets/49566971/701102f0-3581-4125-ad9d-5a54e9e04461)
+![image](https://github.com/matijars/Matflix/assets/49566971/a8867e38-1eaf-4abf-beb9-e1442883548a)
 
-![image](https://github.com/matijars/Matflix/assets/49566971/eaf970de-c810-41d9-9633-bd9ab172cb79)
+![image](https://github.com/matijars/Matflix/assets/49566971/9ea7b502-6dfd-47c5-a85f-83b1e5b7bdba)
 
 ![image](https://github.com/matijars/Matflix/assets/49566971/802585f9-1fc8-45c9-a25a-7a8df6e971a8)
 
