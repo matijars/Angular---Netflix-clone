@@ -20,3 +20,6 @@
 
 ![image](https://github.com/matijars/Matflix/assets/49566971/b206bb9e-1642-4409-bb4a-737328757c39)
 
+![image](https://github.com/matijars/Matflix/assets/49566971/4cb757a0-66a8-4b3d-b970-54ac4e8fc3cf)
+
+
