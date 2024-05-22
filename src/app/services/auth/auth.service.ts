@@ -6,6 +6,7 @@ import {
   GoogleAuthProvider,
   User,
   UserCredential,
+  signInWithEmailAndPassword,
 } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { Observable, from, map } from 'rxjs';
@@ -45,6 +46,11 @@ export class AuthService {
     if (this.isLoggedIn()) {
       this.router.navigate(['movies']);
     }
+  }
+
+  async signInWithEmailAndPassword(email: string, password: string) {
+    const result = await signInWithEmailAndPassword(this.auth, email, password);
+    localStorage.setItem('user', JSON.stringify(result.user));
   }
 
   setUserToLocalStorage() {

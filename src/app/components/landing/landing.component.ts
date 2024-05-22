@@ -58,7 +58,6 @@ export class LandingComponent implements OnInit {
           } else {
             this.errorMessage = error.message;
           }
-          console.log(error.message);
         },
       });
   }

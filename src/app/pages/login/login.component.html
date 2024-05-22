@@ -1,13 +1,33 @@
 <div class="background-section mat-login">
   <app-header></app-header>
   <div class="login-card">
-    <button
-      class="google-btn"
-      (click)="signInWithGoogle()"
-      style="width: 200px"
-    >
-      <img src="../../../assets/google-icon.png" alt="" />
-      Sign in with Google
-    </button>
+    <h1>Sign In</h1>
+    <div class="landing-form-wrapper login-form-wrapper">
+      <form
+        class="landing-form login-form"
+        [formGroup]="loginForm"
+        (ngSubmit)="onSubmit()"
+      >
+        <input type="email" formControlName="email" placeholder="Enter email" />
+        <input
+          type="password"
+          formControlName="password"
+          placeholder="Enter password"
+        />
+        <button type="submit" class="mat-button">Sign In</button>
+        @if (errorMessage) {
+        <div class="http-error">
+          {{ errorMessage }}
+        </div>
+        }
+      </form>
+      <p>OR</p>
+      <button class="google-btn" (click)="signInWithGoogle()">
+        <img src="../../../assets/google-icon.png" alt="" />
+        Sign in with Google
+      </button>
+
+      <p>New to Matflix? <a href="">Sign up now.</a></p>
+    </div>
   </div>
 </div>
