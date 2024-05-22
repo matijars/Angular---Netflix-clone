@@ -6,7 +6,8 @@
 
 <p>Credits for the design goes to <a href='https://www.netflix.com'>Netflix</a></p>
 
-👉 Live Demo: <a href='https://netflix-mm.web.app/'>Live Demo</a>
+👉 Check out the [Live Demo]([https://example.com](https://netflix-mm.web.app/)) of the Matflix website.      
+              
 
 <h3>Build with:</h3>
 
