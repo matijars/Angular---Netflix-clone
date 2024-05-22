@@ -15,3 +15,8 @@
 » SCSS <br>
 » Angular <br>
 » TMDB API
+
+<h2>Project screenshots</h2>
+
+![image](https://github.com/matijars/Matflix/assets/49566971/b206bb9e-1642-4409-bb4a-737328757c39)
+
