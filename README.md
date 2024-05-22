@@ -12,5 +12,6 @@
 <h3>Build with:</h3>
 
 » HTML <br>
-» SCSS
-» Angular
+» SCSS <br>
+» Angular <br>
+» TMDB API
