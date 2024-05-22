@@ -18,7 +18,7 @@
 
 <h2>Project screenshots</h2>
 
-![image](https://github.com/matijars/Matflix/assets/49566971/b206bb9e-1642-4409-bb4a-737328757c39)
+![image](https://github.com/matijars/Matflix/assets/49566971/5a4e4a56-a0e1-40d7-85eb-ee14ea5a4ee1)
 
 ![image](https://github.com/matijars/Matflix/assets/49566971/a8867e38-1eaf-4abf-beb9-e1442883548a)
 
