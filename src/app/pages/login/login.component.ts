@@ -8,7 +8,6 @@ import { Router } from '@angular/router';
   selector: 'app-login',
   standalone: true,
   templateUrl: './login.component.html',
-  styleUrl: './login.component.scss',
   imports: [HeaderComponent, ReactiveFormsModule],
 })
 export class LoginComponent implements OnInit {

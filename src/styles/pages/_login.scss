@@ -1,5 +1,6 @@
 .mat-login {
   display: flex;
+  flex-direction: column;
   flex: 1;
   height: 100vh;
   background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
@@ -14,9 +15,10 @@
     align-items: center;
     margin: 50px auto;
     height: fit-content;
-    min-width: 450px;
     padding: 30px;
     border-radius: 1em;
+    width: 100%;
+    max-width: 450px;
 
     h1 {
       margin-bottom: 1em;
